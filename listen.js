@@ -5,9 +5,11 @@ const http = require("http");
   try {
     const signer = new Signer();
 
+    const port = process.env.PORT || 8080
+
     const server = http
       .createServer()
-      .listen(process.env.PORT || 8080, "127.0.0.1")
+      .listen(port, "127.0.0.1")
       .on("listening", function () {
         console.log("TikTok Signature server started");
       });
