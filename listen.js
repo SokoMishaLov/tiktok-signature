@@ -7,7 +7,7 @@ const http = require("http");
 
     const server = http
       .createServer()
-      .listen(8080, "127.0.0.1")
+      .listen(process.env.PORT || 8080, "127.0.0.1")
       .on("listening", function () {
         console.log("TikTok Signature server started");
       });
