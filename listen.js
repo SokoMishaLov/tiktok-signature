@@ -14,15 +14,6 @@ const http = require("http");
         console.log("TikTok Signature server started");
       });
 
-    // Uncomment if you want to auto-exit this application after a period of time
-    // Supervisord will attempt to re-open it if are used
-    // setTimeout(function () {
-    //   server.close(() => {
-    //     console.log("Server shutdown completed.");
-    //     process.exit(1);
-    //   });
-    // }, 1 * 60 * 60 * 1000);
-
     signer.init(); // !?
 
     server.on("request", (request, response) => {
@@ -39,7 +30,7 @@ const http = require("http");
             const verifyFp = await signer.getVerifyFp();
             const token = await signer.sign(url);
             let output = JSON.stringify({
-              signature: token,
+              _signature: token,
               verifyFp: verifyFp,
             });
             response.writeHead(200, { "Content-Type": "application/json" });
